@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
     res.send(`
         <html>
             <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="bundle.css" />
                 <link href="https://fonts.googleapis.com/css?family=Roboto|Source+Sans+Pro:300,400" rel="stylesheet">
             </head>

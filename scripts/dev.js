@@ -8,11 +8,16 @@ const chalk = require('chalk');
 const compiler = webpack(config);
 
 compiler.watch({}, (err, stats) => {
-  if(err) { console.log(err); }
-  if(stats.compilation) {
-    const taken = (stats.endTime - stats.startTime);
-    console.log(chalk.blue(`=> Built frontend files [${taken}ms]`))
-  }
+  if(err) { console.log(err); process.exit(); }
+  console.log(chalk.blue(`=> Webpack build complete!`));
+  console.log(stats.toString({
+        colors: true,
+        hash: false,
+        chunks: false,
+        version: false,
+        children: false,
+        chunkModules: false
+  }));
 });
 
 nodemon({

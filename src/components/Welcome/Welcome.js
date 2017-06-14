@@ -12,9 +12,14 @@ class Welcome extends Component {
                 <hr />
                 <p>Threadbare is a basis for building isometric inferno apps easily.</p>
                 <p>In its default form it carries very few dependencies and is meant to be as lean as possible</p>
+                <h5>Development</h5>
                 <p>To start the application in a development environment run:</p>
-                <p><code>yarn dev</code></p>
+                <pre><code>yarn dev</code></pre>
                 <p>By default this will build the front end javascript and restart the server on demand, all that is left for you to do is refresh.</p>
+                <h5>Production</h5>
+                <p>To build the application for production run:</p>
+                <pre><code>yarn build</code></pre>
+                <p>This will uglify and minify the front end assets.</p>
             </div>
         )
     }
