@@ -33,6 +33,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "fast-async": "^6.2.2",
     "kube": "https://github.com/imperavi/kube",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.11.0",
     "sass-loader": "^6.0.5",
     "webpack": "^2.6.1"
