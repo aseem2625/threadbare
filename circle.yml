@@ -5,7 +5,7 @@ dependencies:
   post:
     - npm rebuild node-sass
     - yarn build
-    - mv public $CIRCLE_ARTIFACTS
+    - mv public CIRCLECI_ARTIFACT
   override:
     - yarn
 deployment:
