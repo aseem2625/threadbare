@@ -5,6 +5,8 @@ import InfernoServer from 'inferno-server';
 
 const app = express();
 
+app.set('port', process.env.PORT || 3123);
+
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -29,4 +31,4 @@ app.get('/', (req, res) => {
     `);
 });
 
-app.listen(3123);
+app.listen(app.get('port'));
