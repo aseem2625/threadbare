@@ -3,7 +3,10 @@ machine:
     version: 7.7.0
 dependencies:
   post:
+    - npm rebuild node-sass
     - yarn build
+    - mkdir $CIRCLE_ARTIFACTS/public
+    - mv /public $CIRCLE_ARTIFACTS
   override:
     - yarn
 deployment:
@@ -11,10 +14,6 @@ deployment:
     branch: master
     heroku:
       appname: threadbare-staging
-build:
-  post:
-    - mkdir $CIRCLE_ARTIFACTS/public
-    - mv /public $CIRCLE_ARTIFACTS
 general:
   artifacts:
     - "/public"
