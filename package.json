@@ -43,6 +43,6 @@
   "scripts": {
     "dev": "./scripts/dev.js",
     "build": "./scripts/build.js",
-    "heroku-postinstall": "yarn build"
+    "postinstall": "yarn build"
   }
 }
