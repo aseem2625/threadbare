@@ -12,5 +12,6 @@ deployment:
     heroku:
       appname: threadbare-staging
 general:
+  build_dir: public
   artifacts:
     - "public"
