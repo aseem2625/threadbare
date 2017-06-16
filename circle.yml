@@ -7,3 +7,9 @@ dependencies:
     - yarn build
   override:
     - yarn
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: threadbare-staging
