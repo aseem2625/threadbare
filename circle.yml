@@ -11,6 +11,10 @@ deployment:
     branch: master
     heroku:
       appname: threadbare-staging
+test:
+  post:
+    - mkdir $CIRCLE_ARTIFACTS/public
+    - mv /public $CIRCLE_ARTIFACTS
 general:
   artifacts:
     - "/public"
