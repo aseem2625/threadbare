@@ -1,15 +1,16 @@
 machine:
   node:
     version: 7.7.0
-
 dependencies:
   post:
     - yarn build
   override:
     - yarn
-
 deployment:
   staging:
     branch: master
     heroku:
       appname: threadbare-staging
+general:
+  artifacts:
+    - "public"

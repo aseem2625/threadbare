@@ -42,7 +42,6 @@
   },
   "scripts": {
     "dev": "./scripts/dev.js",
-    "build": "./scripts/build.js",
-    "postinstall": "yarn build"
+    "build": "./scripts/build.js"
   }
 }
