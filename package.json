@@ -49,7 +49,7 @@
     "build": "./scripts/build.js"
   },
   "name": "threadbare",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Basis for thread inferno projects",
   "main": "index.js",
   "repository": {

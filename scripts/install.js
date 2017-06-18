@@ -39,6 +39,8 @@ const yarn = spawn('yarn', {stdio: 'inherit'});
 
 yarn.on('close', (data) => {
     console.log(chalk.green('=> S\'all gravy baby!'));
+    console.log(chalk.bold('=> Everything is now setup and ready to go!'));
+    console.log(chalk.bold('=> Run yarn dev to start work on your dev environment'))
 });
 
 
