@@ -49,7 +49,7 @@ const baseConfig = {
             },
             {
                 test: /\.(css|scss)(\?.+)?$/,
-                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + coreSrc('../node_modules/kube/src')]),
+                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + paths.module + '/node_modules/kube/src']),
                 include: [paths.app]
             },
             {
