@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const config = require('./webpack.dev.config.js');
+const config = require('../config/webpack.dev.config.js');
 const webpack = require('webpack');
 const nodemon = require('nodemon');
 const chalk = require('chalk');

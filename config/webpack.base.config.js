@@ -3,13 +3,13 @@ const webpack = require('webpack')
 const Copy = require('copy-webpack-plugin')
 const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
-const paths = require('../config/paths');
 
+const paths = require('../config/paths')
 const root = join(__dirname, '..')
-const pubDir = join(root, 'public')
-const srcDir = join(root, 'src')
 
-const src = loc => join(srcDir, loc)
+const srcDir = join(root, 'src')
+const coreSrc = loc => join(srcDir, loc)
+const appSrc = loc => join(paths.app, loc)
 
 const baseConfig = {
     module : {
@@ -19,7 +19,7 @@ const baseConfig = {
                 loader: 'babel-loader',
                 include: [
                     paths.app,
-                    src('../node_modules/babel-plugin-inferno')
+                    coreSrc('../node_modules/babel-plugin-inferno')
                 ],
                 query: {
                     babelrc: false,
@@ -40,66 +40,33 @@ const baseConfig = {
             {
                 test: /\.(jpg|png|svg)(\?.+)?$/,
                 loader: 'url-loader?limit=100000',
-                include: [src('assets'), src('client/components')]
+                include: [appSrc('assets'), appSrc('components')]
             },
             {
                 test: /\.(ttf|otf|eot|woff2?)(\?.+)?$/,
                 loader: 'file-loader',
-                include: [src('assets'), src('client/components')]
+                include: [appSrc('assets'), appSrc('components')]
             },
             {
                 test: /\.(css|scss)(\?.+)?$/,
-                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + join(paths.app, 'node_modules/kube/src')]),
+                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + coreSrc('../node_modules/kube/src')]),
                 include: [paths.app]
             },
             {
                 test: /\.md$/,
                 loader: 'html-loader!markdown-loader',
-                include: [src('docs'), src('client/components')]
+                include: [src('docs'), appSrc('components')]
             },
             {
                 test: /\.json$/,
-                loader: 'json-loader',
-                exclude: [srcDir]
+                loader: 'json-loader'
             }
         ]
     },
     plugins: [
-        new ExtractCSS({ filename: 'public/bundle.css', allChunks: true }),
-        new webpack.DefinePlugin({
-            'process.env.DEV': false,
-            'process.env.BROWSER': true,
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                screw_ie8: true,
-                warnings: false
-            },
-            output: {
-                comments: false
-            }
-        })
+        new ExtractCSS({ filename: 'public/bundle.css', allChunks: true })
     ]
 }
-
-baseConfig.module.loaders.forEach(loader => {
-    if (loader.loader === 'babel-loader') {
-        loader.query.plugins.push(
-            "transform-es2015-arrow-functions",
-            "transform-es2015-block-scoped-functions",
-            "transform-es2015-block-scoping",
-            "transform-es2015-classes",
-            "transform-es2015-computed-properties",
-            "transform-es2015-literals",
-            "transform-es2015-parameters",
-            "transform-es2015-shorthand-properties",
-            "transform-es2015-spread",
-            "transform-es2015-template-literals"
-        )
-    }
-})
 
 const appConfig = {
     entry : './src/index.js',
