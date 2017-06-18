@@ -55,7 +55,7 @@ const baseConfig = {
             {
                 test: /\.md$/,
                 loader: 'html-loader!markdown-loader',
-                include: [src('docs'), appSrc('components')]
+                include: [appSrc('docs'), appSrc('components')]
             },
             {
                 test: /\.json$/,
