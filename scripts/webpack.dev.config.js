@@ -32,7 +32,6 @@ const baseConfig = {
                         "transform-object-rest-spread",
                         "transform-decorators-legacy",
                         "transform-class-properties",
-                        "syntax-jsx",
                         "inferno",
                         ["fast-async"]
                     ]
@@ -50,7 +49,7 @@ const baseConfig = {
             },
             {
                 test: /\.(css|scss)(\?.+)?$/,
-                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + join(paths.module, 'node_modules/kube/src')]),
+                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + join(paths.app, 'node_modules/kube/src')]),
                 include: [paths.app]
             },
             {
