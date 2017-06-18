@@ -2,9 +2,8 @@
 
 const script = process.argv[2];
 const path = require('path');
-const fs = require('fs');
 
-const appDirectory = fs.realpathSync(process.cwd());
+const paths = require('../config/paths');
 
 switch(script) {
     case 'build':
@@ -12,8 +11,7 @@ switch(script) {
     case 'dev':
 
         const { spawn } = require('child_process');
-
-        console.log(appDirectory + 'Initialised threadbare');
+        const process = spawn(require.resolve('../scripts/' + script), {stdio: [0, 1, 2, 'ipc']});
 
     break;
 }

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const Copy = require('copy-webpack-plugin')
 const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
+const paths = require('../config/paths');
 
 const root = join(__dirname, '..')
 const pubDir = join(root, 'public')
@@ -17,7 +18,7 @@ const baseConfig = {
                 test: /\.js?$/,
                 loader: 'babel-loader',
                 include: [
-                    srcDir,
+                    paths.app,
                     src('../node_modules/babel-plugin-inferno')
                 ],
                 query: {
@@ -49,7 +50,7 @@ const baseConfig = {
             {
                 test: /\.(css|scss)(\?.+)?$/,
                 loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize&includePaths[]=' + join(root, 'node_modules/kube/src')]),
-                include: [srcDir]
+                include: [paths.app]
             },
             {
                 test: /\.md$/,
