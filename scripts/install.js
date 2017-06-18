@@ -27,7 +27,7 @@ const scripts = {
     build : "yarn threadbare build"
 }
 
-currentPkg.scripts = Object.assign(currentPkg.scripts, scripts);
+currentPkg.scripts = Object.assign({}, currentPkg.scripts, scripts);
 
 console.log(chalk.green('=> Saving package.json'));
 
