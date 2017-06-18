@@ -20,7 +20,16 @@ const currentPkg = JSON.parse(fs.readFileSync(path.join(paths.app, 'package.json
 
 currentPkg.dependencies = Object.assign({}, currentPkg.dependencies, package.devDependencies);
 
-console.log(chalk.green('=> Saving new dependencies'));
+console.log(chalk.green('=> Setting threadbare scripts to package'));
+
+const scripts = {
+    dev : "yarn threadbare dev",
+    build : "yarn threadbare build"
+}
+
+currentPkg.scripts = Object.assign(currentPkg.scripts, scripts);
+
+console.log(chalk.green('=> Saving package.json'));
 
 fs.writeFileSync(path.join(paths.app, 'package.json'), JSON.stringify(currentPkg, null, 2));
 
