@@ -49,10 +49,10 @@
   "scripts": {
     "dev": "./scripts/dev.js",
     "build": "./scripts/build.js",
-    "test" : "jest"
+    "test": "jest"
   },
   "name": "threadbare",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Basis for thread inferno projects",
   "main": "index.js",
   "repository": {
