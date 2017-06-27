@@ -18,13 +18,15 @@ console.log(chalk.grey(Object.keys(package.devDependencies).join("\r\n")));
 
 const currentPkg = JSON.parse(fs.readFileSync(path.join(paths.app, 'package.json'), 'utf-8'));
 
-currentPkg.dependencies = Object.assign({}, currentPkg.dependencies, package.devDependencies);
+currentPkg.dependencies = Object.assign({}, currentPkg.dependencies, package.dependencies);
+currentPkg.devDependencies = Object.assign({}, currentPkg.devDependencies, package.devDependencies);
 
 console.log(chalk.green('=> Setting threadbare scripts to package'));
 
 const scripts = {
     dev : "yarn threadbare dev",
-    build : "yarn threadbare build"
+    build : "yarn threadbare build",
+    test : "jest"
 }
 
 currentPkg.scripts = Object.assign({}, currentPkg.scripts, scripts);
