@@ -24,7 +24,8 @@ console.log(chalk.green('=> Setting threadbare scripts to package'));
 
 const scripts = {
     dev : "yarn threadbare dev",
-    build : "yarn threadbare build"
+    build : "yarn threadbare build",
+    jest : "jest"
 }
 
 currentPkg.scripts = Object.assign({}, currentPkg.scripts, scripts);
